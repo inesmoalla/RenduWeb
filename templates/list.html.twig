@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Show Author</title>
+</head>
+<body>
+<table>
+ <tr>
+            <th>ID</th>
+            <th>Picture</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Number of Books</th>
+              <th>Détails</th> 
+            
+        </tr>
+        {% if h is empty %}
+        <p> le tazbleau est vide</p>
+        {% else %}
+         {% for author in h %}
+         <tr>
+         <th>{{author.id}}  </th>
+<th><img src="{{ asset(author.picture) }}" alt="{{ author.username }}" width="100">   </th>
+<th>{{ author.username |upper()}}   </th>
+<th> {{ author.email }}  </th>
+<th> {{ author.nb_books }}  </th>
+ <th> <a href="{{ path('d', { 'id': author.id }) }}">Détails</a></th>
+
+</tr>
+
+         {% endfor %}
+  {% endif %}
+ 
+
+ 
+
+
+
+</table>
+ <br>
+  <h1>nombre d'auteurs : {{nbre}} auteurs</h1>
+  <br>
+  <h1>nombre de livres de tous les auteurs : {{l}} livres</h1>
+</body>
+</html>
